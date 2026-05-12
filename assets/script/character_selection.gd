@@ -1,9 +1,9 @@
 extends Control
 
-# --- CONFIGURATION ---
+
 @export var scene_path: String = "res://assets/scene/gameplay.tscn"
 
-# --- NODES ---
+
 @onready var click_button = $PanelContainer/GridContainer/click_buttton
 @onready var start_button = $Startbtn
 
@@ -20,7 +20,7 @@ var current_player_count = 0
 func _ready():
 	Global.player_selections = [-1, -1, -1, -1]
 	
-	# Setup Character Buttons
+	
 	for i in range(buttons.size()):
 		buttons[i].pivot_offset = buttons[i].size / 2
 		var label = buttons[i].get_node_or_null("PlayerLabel")
