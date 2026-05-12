@@ -14,10 +14,17 @@ config/name="SUS Cake"
 run/main_scene="uid://c4lh2wy4jjkof"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+config/handheld/orientation=1
+config/stretch/mode="canvas_items"
+config/size/viewport_width=1080
 
 [audio]
 
-buses/default_bus_layout="uid://crv1fbmk26hot"
+buses/default_bus_layout=""
+
+[autoload]
+
+Global="*uid://dphbuqmd4cvy1"
 
 [display]
 

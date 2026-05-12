@@ -7,8 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cqg5rmdd3a0h2" path="res://assets/button/Play button.png" id="5_ik5hp"]
 [ext_resource type="Texture2D" uid="uid://ca4uelmoyh4jg" path="res://assets/button/Playpress button.png" id="6_tr7ng"]
 [ext_resource type="Texture2D" uid="uid://hkl3x0thtukg" path="res://assets/button/mutebutton1.png" id="7_0v4v6"]
+[ext_resource type="AudioStream" uid="uid://c0535yw0r7k7g" path="res://assets/audio/click.wav" id="7_sqps5"]
 [ext_resource type="Texture2D" uid="uid://cp51mwd16jrru" path="res://assets/button/mutebutton2.png" id="8_wf5gy"]
-[ext_resource type="AudioStream" uid="uid://1mkjo48150rr" path="res://assets/audio/Sus Cake Parade.mp3" id="9_7cdjl"]
+[ext_resource type="PackedScene" uid="uid://dp5gym6mfcono" path="res://assets/scene/background_music.tscn" id="9_yblp6"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_4ohlf"]
 frames = 9
@@ -29,6 +30,43 @@ frame_7/texture = ExtResource("4_g01hn")
 frame_7/duration = 1.0
 frame_8/texture = ExtResource("3_g1b68")
 frame_8/duration = 1.0
+
+[sub_resource type="Animation" id="Animation_sqps5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.003921569, 0.003921569, 0.003921569, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yblp6"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0009999999, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.003921569, 0.003921569, 0.003921569, 0), Color(0.003921569, 0.003921569, 0.003921569, 0.9764706)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sqps5"]
+_data = {
+&"RESET": SubResource("Animation_sqps5"),
+&"fade_out": SubResource("Animation_yblp6")
+}
 
 [node name="Main_menu" type="Control" unique_id=896100100]
 layout_mode = 3
@@ -73,6 +111,9 @@ grow_vertical = 2
 texture_normal = ExtResource("5_ik5hp")
 texture_pressed = ExtResource("6_tr7ng")
 
+[node name="clickbtn" type="AudioStreamPlayer" parent="Playbtn" unique_id=1520197620]
+stream = ExtResource("7_sqps5")
+
 [node name="Mutebtn" type="TextureButton" parent="." unique_id=1314680822]
 layout_mode = 1
 anchors_preset = -1
@@ -90,11 +131,27 @@ action_mode = 0
 texture_normal = ExtResource("7_0v4v6")
 texture_pressed = ExtResource("8_wf5gy")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=848905219]
-stream = ExtResource("9_7cdjl")
-volume_db = -10.0
-bus = &"Music"
+[node name="clickbtn" type="AudioStreamPlayer" parent="Mutebtn" unique_id=1132545096]
+stream = ExtResource("7_sqps5")
+
+[node name="BackgroundMusic" parent="." unique_id=1457082685 instance=ExtResource("9_yblp6")]
+mix_target = 1
+
+[node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=22320886]
+
+[node name="ColorRect" type="ColorRect" parent="TransitionLayer" unique_id=655949909]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.9990001
+offset_right = 8.0
+offset_bottom = 0.9199219
+mouse_filter = 2
+color = Color(0.003921569, 0.003921569, 0.003921569, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionLayer" unique_id=1757384370]
+libraries/ = SubResource("AnimationLibrary_sqps5")
+autoplay = &"fade_out"
 
 [connection signal="pressed" from="Playbtn" to="." method="_on_playbtn_pressed"]
 [connection signal="pressed" from="Mutebtn" to="." method="_on_mutebtn_pressed"]
-[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="BackgroundMusic" to="." method="_on_background_music_finished"]
