@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://cptk5rcyy3gds"]
 
 [ext_resource type="Texture2D" uid="uid://db4vpmq7b02i8" path="res://assets/background/gameplayBackground.jpg" id="1_7k5ar"]
-[ext_resource type="Script" uid="uid://bl7lhmrna78w6" path="res://assets/script/gameplay.gd" id="1_mrk3l"]
-[ext_resource type="PackedScene" uid="uid://bhxl3pb1qwal8" path="res://player_scene.tscn" id="2_ggcbi"]
+[ext_resource type="Script" uid="uid://bl7lhmrna78w6" path="res://assets/script/player_scene.gd" id="1_mrk3l"]
 [ext_resource type="Texture2D" uid="uid://216vjrb2jyuk" path="res://assets/object/Base.png" id="4_pdl6y"]
 [ext_resource type="Texture2D" uid="uid://bbc1w5rddm735" path="res://assets/object/shuffle 1.png" id="4_yax4l"]
 [ext_resource type="Texture2D" uid="uid://c4q1a7asvecge" path="res://assets/object/shuffle 2.png" id="5_7k5ar"]
@@ -14,7 +13,6 @@
 [ext_resource type="AudioStream" uid="uid://c0535yw0r7k7g" path="res://assets/audio/click.wav" id="9_7k5ar"]
 [ext_resource type="Texture2D" uid="uid://c6qlmv8fpss4e" path="res://assets/object/cake.png" id="9_uwj3s"]
 [ext_resource type="Texture2D" uid="uid://dfy732g6ttg7a" path="res://assets/object/bomb cake.png" id="10_chsc1"]
-[ext_resource type="PackedScene" uid="uid://dp5gym6mfcono" path="res://assets/scene/background_music.tscn" id="10_ea7g1"]
 [ext_resource type="Texture2D" uid="uid://crngod1ol22kc" path="res://assets/button/pausebutton.png" id="12_uwj3s"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_lcqw3"]
@@ -40,15 +38,13 @@ frame_3/duration = 1.0
 
 [node name="player_scene" type="Node2D" unique_id=806031517]
 script = ExtResource("1_mrk3l")
-player_scene = ExtResource("2_ggcbi")
+player_scene = null
 
 [node name="gamebackground" type="Sprite2D" parent="." unique_id=474733748]
 texture_filter = 1
 position = Vector2(540, 960.00006)
 scale = Vector2(1.1250001, 1.1247803)
 texture = ExtResource("1_7k5ar")
-
-[node name="BackgroundMusic" parent="." unique_id=1457082685 instance=ExtResource("10_ea7g1")]
 
 [node name="cake" type="Node2D" parent="." unique_id=680513007]
 

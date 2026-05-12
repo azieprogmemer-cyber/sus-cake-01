@@ -2,7 +2,6 @@ extends Node2D
  
 @export var player_scene: PackedScene
 @onready var cake_node = $cake
-# Added a Type Hint (: Timer) to fix the Line 35 warning
 @onready var round_timer: Timer = $Timer    
  
 @onready var center_point = Vector2(540, 960) 
@@ -19,21 +18,17 @@ func _ready():
 	start_round_timer(5.0)
  
 func spawn_players():
+	# Safety check: If the scene is missing, don't try to spawn it
 	if player_scene == null:
-		push_error("Player Scene is missing! Drag your .tscn file into the Inspector slot.")
+		print("CRITICAL ERROR: Player Scene not assigned in Inspector!")
 		return
- 
+
 	for i in range(4):
 		if Global.player_selections[i] != -1:
 			var p = player_scene.instantiate()
-			
-			# Use 'in' checks to safely assign variables
-			if "player_id" in p:
-				p.player_id = i
-			if "character_type" in p:
-				p.character_type = Global.player_selections[i]
- 
+			p.player_id = i
 			p.add_to_group("players") 
+			p.character_type = Global.player_selections[i]
 			p.position = corner_positions[i]
 			add_child(p)
  

@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://dp5gym6mfcono"]
-
-[ext_resource type="AudioStream" uid="uid://1mkjo48150rr" path="res://assets/audio/Sus Cake Parade.mp3" id="1_di20b"]
-
-[node name="BackgroundMusic" type="AudioStreamPlayer" unique_id=1457082685]
-stream = ExtResource("1_di20b")
-volume_db = -10.0

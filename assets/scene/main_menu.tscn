@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://hkl3x0thtukg" path="res://assets/button/mutebutton1.png" id="7_0v4v6"]
 [ext_resource type="AudioStream" uid="uid://c0535yw0r7k7g" path="res://assets/audio/click.wav" id="7_sqps5"]
 [ext_resource type="Texture2D" uid="uid://cp51mwd16jrru" path="res://assets/button/mutebutton2.png" id="8_wf5gy"]
-[ext_resource type="PackedScene" uid="uid://dp5gym6mfcono" path="res://assets/scene/background_music.tscn" id="9_yblp6"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_4ohlf"]
 frames = 9
@@ -134,9 +133,6 @@ texture_pressed = ExtResource("8_wf5gy")
 [node name="clickbtn" type="AudioStreamPlayer" parent="Mutebtn" unique_id=1132545096]
 stream = ExtResource("7_sqps5")
 
-[node name="BackgroundMusic" parent="." unique_id=1457082685 instance=ExtResource("9_yblp6")]
-mix_target = 1
-
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=22320886]
 
 [node name="ColorRect" type="ColorRect" parent="TransitionLayer" unique_id=655949909]
@@ -154,4 +150,3 @@ autoplay = &"fade_out"
 
 [connection signal="pressed" from="Playbtn" to="." method="_on_playbtn_pressed"]
 [connection signal="pressed" from="Mutebtn" to="." method="_on_mutebtn_pressed"]
-[connection signal="finished" from="BackgroundMusic" to="." method="_on_background_music_finished"]
