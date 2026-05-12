@@ -1,7 +1,7 @@
 extends Control
 
 
-@export var scene_path: String = "res://assets/scene/gameplay.tscn"
+@export var scene_path: String = "res://assets/scene/player_scene.tscn"
 
 
 @onready var click_button = $PanelContainer/GridContainer/click_buttton

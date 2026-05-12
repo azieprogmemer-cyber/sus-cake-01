@@ -113,7 +113,6 @@ texture_pressed = ExtResource("6_tr7ng")
 
 [node name="clickbtn" type="AudioStreamPlayer" parent="Playbtn" unique_id=1520197620]
 stream = ExtResource("7_sqps5")
-bus = &"Music"
 
 [node name="Mutebtn" type="TextureButton" parent="." unique_id=1314680822]
 layout_mode = 1
@@ -134,7 +133,6 @@ texture_pressed = ExtResource("8_wf5gy")
 
 [node name="clickbtn" type="AudioStreamPlayer" parent="Mutebtn" unique_id=1132545096]
 stream = ExtResource("7_sqps5")
-bus = &"Music"
 
 [node name="BackgroundMusic" parent="." unique_id=1457082685 instance=ExtResource("9_yblp6")]
 mix_target = 1
