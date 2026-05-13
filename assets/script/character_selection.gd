@@ -1,81 +1,73 @@
 extends Control
 
-
 @export var scene_path: String = "res://assets/scene/player_scene.tscn"
 
+# Use get_node_or_null to prevent crashing if the name is wrong
+@onready var start_button = get_node_or_null("Startbtn")
 
-@onready var click_button = $PanelContainer/GridContainer/click_buttton
-@onready var start_button = $Startbtn
-
-@onready var buttons = [
-	$PanelContainer/GridContainer/Circlebtn,
-	$PanelContainer/GridContainer/Squarebtn,
-	$PanelContainer/GridContainer/Trianglebtn,
-	$PanelContainer/GridContainer/Heartbtn
-]
+# We define these inside _ready to make sure the scene tree is actually loaded
+var buttons: Array = []
 
 func _ready():
-	# Reset Global data via our helper function
-	Global.reset_data()
+	# 1. Reset data through the REAL Autoload (Global.gd)
+	if Global.has_method("reset_data"):
+		Global.reset_data()
 	
-	# Setup Buttons
+	# 2. Assign buttons manually to ensure they exist
+	buttons = [
+		get_node_or_null("PanelContainer/GridContainer/Circlebtn"),
+		get_node_or_null("PanelContainer/GridContainer/Squarebtn"),
+		get_node_or_null("PanelContainer/GridContainer/Trianglebtn"),
+		get_node_or_null("PanelContainer/GridContainer/Heartbtn")
+	]
+	
+	# 3. Setup Buttons
 	for i in range(buttons.size()):
-		# Pivot offset is required for the "Scale" animation to grow from the center
-		buttons[i].pivot_offset = buttons[i].size / 2
-		
-		# Clear any placeholder text in the "YOU" label
-		var label = buttons[i].get_node_or_null("PlayerLabel")
-		if label: label.text = ""
-		
-		# Connect the press signal
-		buttons[i].pressed.connect(_on_character_pressed.bind(i))
+		var btn = buttons[i]
+		if btn: # Only run logic if the button was actually found
+			btn.pivot_offset = btn.size / 2
+			var label = btn.get_node_or_null("PlayerLabel")
+			if label: label.text = ""
+			
+			if not btn.pressed.is_connected(_on_character_pressed):
+				btn.pressed.connect(_on_character_pressed.bind(i))
 	
-	# Prepare the Start button
-	start_button.visible = false
-	if not start_button.pressed.is_connected(_on_start_button_pressed):
-		start_button.pressed.connect(_on_start_button_pressed)
+	# 4. Setup Start Button
+	if start_button:
+		start_button.visible = false
+		if not start_button.pressed.is_connected(_on_start_button_pressed):
+			start_button.pressed.connect(_on_start_button_pressed)
 	
 	_update_visuals()
 
 func _on_character_pressed(index: int):
-	# Single Player: Only index 0 (Player 1) is used
 	Global.player_selections[0] = index
 	
-	# Update labels: Remove "YOU" from everywhere, then add to the new choice
 	for btn in buttons:
-		var lbl = btn.get_node_or_null("PlayerLabel")
-		if lbl: lbl.text = ""
+		if btn:
+			var lbl = btn.get_node_or_null("PlayerLabel")
+			if lbl: lbl.text = ""
 		
-	var label = buttons[index].get_node_or_null("PlayerLabel")
-	if label:
-		label.text = "YOU"
+	if buttons[index]:
+		var selected_label = buttons[index].get_node_or_null("PlayerLabel")
+		if selected_label:
+			selected_label.text = "YOU"
 	
-	_play_hover_sound()
 	_update_visuals()
-	
-	# Show the start button now that a choice is made
-	start_button.visible = true
+	if start_button:
+		start_button.visible = true
 
 func _update_visuals():
 	for i in range(buttons.size()):
-		# Highlight the button if it matches the current selection
-		var is_selected = Global.player_selections[0] == i
-		
-		if is_selected:
-			# Give it the "SUS Cake" purple tint and make it pop
-			buttons[i].modulate = Color(0.878, 0.831, 0.965, 1.0)
-			buttons[i].scale = Vector2(1.1, 1.1)
-		else:
-			# Revert others to normal
-			buttons[i].modulate = Color.WHITE
-			buttons[i].scale = Vector2(1.0, 1.0)
+		if buttons[i]:
+			var is_selected = Global.player_selections[0] == i
+			if is_selected:
+				buttons[i].modulate = Color(0.878, 0.831, 0.965, 1.0)
+				buttons[i].scale = Vector2(1.1, 1.1)
+			else:
+				buttons[i].modulate = Color.WHITE
+				buttons[i].scale = Vector2(1.0, 1.0)
 
 func _on_start_button_pressed():
-	_play_hover_sound()
-	# Brief pause so the player feels the button click
 	await get_tree().create_timer(0.2).timeout
-	get_tree().change_scene_to_file("res://assets/scene/player_scene.tscn")
-
-func _play_hover_sound():
-	if click_button:
-		click_button.play()
+	get_tree().change_scene_to_file(scene_path)

@@ -8,10 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cm4t6pcmrvhhy" path="res://assets/button/backbutton1.png" id="6_bnkh7"]
 [ext_resource type="Texture2D" uid="uid://bxv01abspm1dt" path="res://assets/button/press exit2.png" id="6_m3rpk"]
 [ext_resource type="AudioStream" uid="uid://c0535yw0r7k7g" path="res://assets/audio/click.wav" id="9_7k5ar"]
-[ext_resource type="Texture2D" uid="uid://c6qlmv8fpss4e" path="res://assets/object/cake.png" id="9_uwj3s"]
-[ext_resource type="Texture2D" uid="uid://b2u8q2cc1lmur" path="res://assets/object/plus and equal.png" id="10_m3rpk"]
-[ext_resource type="Texture2D" uid="uid://cqg5rmdd3a0h2" path="res://assets/button/Play button.png" id="11_h7egd"]
-[ext_resource type="Texture2D" uid="uid://ca4uelmoyh4jg" path="res://assets/button/Playpress button.png" id="12_kpr1k"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_bd2ym"]
 frames = 12
@@ -70,7 +66,7 @@ anchor_top = 0.52500004
 anchor_right = 0.50100005
 anchor_bottom = 0.52500004
 offset_left = -538.0801
-offset_top = -910.00006
+offset_top = -937.00006
 offset_right = 530.9199
 offset_bottom = 899.99994
 grow_horizontal = 2
@@ -86,7 +82,7 @@ anchor_top = 0.536
 anchor_right = 0.517
 anchor_bottom = 0.536
 offset_left = -563.36005
-offset_top = -871.12
+offset_top = -924.12
 offset_right = 516.63995
 offset_bottom = 800.88
 grow_horizontal = 2
@@ -97,7 +93,7 @@ ignore_texture_size = true
 [node name="clickbutton" type="AudioStreamPlayer" parent="press exit" unique_id=1515468540]
 stream = ExtResource("9_7k5ar")
 
-[node name="backbutton" type="TextureButton" parent="." unique_id=279372948]
+[node name="backbutton" type="TextureRect" parent="." unique_id=528196328]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.185
@@ -108,82 +104,8 @@ offset_right = 0.19999695
 offset_bottom = -0.3999939
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("6_bnkh7")
+texture = ExtResource("6_bnkh7")
+expand_mode = 1
 
 [node name="clickbutton" type="AudioStreamPlayer" parent="backbutton" unique_id=2037645565]
 stream = ExtResource("9_7k5ar")
-
-[node name="exitPanel" type="Panel" parent="." unique_id=1219183648]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="cake2" type="TextureRect" parent="exitPanel" unique_id=902070067]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.77300006
-anchor_top = 0.44200003
-anchor_right = 0.77300006
-anchor_bottom = 0.44200003
-offset_left = 151.15991
-offset_top = -157.64008
-offset_right = 468.1599
-offset_bottom = 145.35992
-rotation = 1.5707964
-texture = ExtResource("9_uwj3s")
-
-[node name="cake1" type="TextureRect" parent="exitPanel" unique_id=1692528637]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.245
-anchor_top = 0.455
-anchor_right = 0.245
-anchor_bottom = 0.455
-offset_left = 151.4
-offset_top = -158.60004
-offset_right = 468.4
-offset_bottom = 144.39996
-rotation = 1.5707964
-texture = ExtResource("9_uwj3s")
-
-[node name="plus and equal" type="TextureRect" parent="exitPanel" unique_id=1467476531]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 67.0
-offset_top = 488.0
-offset_right = -11.0
-offset_bottom = -226.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_m3rpk")
-expand_mode = 1
-
-[node name="LineEdit" type="LineEdit" parent="exitPanel" unique_id=1923675298]
-layout_mode = 0
-offset_left = 364.0
-offset_top = 1175.0
-offset_right = 752.0
-offset_bottom = 1320.0
-theme_override_font_sizes/font_size = 100
-alignment = 1
-
-[node name="confirmexitbutton" type="TextureButton" parent="exitPanel" unique_id=426667094]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.505
-anchor_top = 0.79600006
-anchor_right = 0.505
-anchor_bottom = 0.79600006
-offset_left = -115.400024
-offset_top = -113.32007
-offset_right = 115.599976
-offset_bottom = 111.67993
-texture_normal = ExtResource("11_h7egd")
-texture_pressed = ExtResource("12_kpr1k")
-ignore_texture_size = true
-stretch_mode = 0

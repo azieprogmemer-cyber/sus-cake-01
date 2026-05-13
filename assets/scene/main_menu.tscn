@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cn3nmg0dypo06" path="res://assets/script/main_menu.gd" id="1_yblp6"]
 [ext_resource type="Texture2D" uid="uid://chl2cw07nr667" path="res://assets/background/UIbackground.jpeg" id="2_sqps5"]
-[ext_resource type="Texture2D" uid="uid://bbo8syw7jg42j" path="res://assets/title/title1.png" id="3_g1b68"]
-[ext_resource type="Texture2D" uid="uid://cl1jg0ld1a1lj" path="res://assets/title/title2.png" id="4_g01hn"]
+[ext_resource type="Texture2D" uid="uid://cx4su3mla0xby" path="res://assets/title/suscakeor game.png" id="3_yblp6"]
+[ext_resource type="Texture2D" uid="uid://d4nhyblue1uke" path="res://assets/title/susgame.png" id="4_sqps5"]
 [ext_resource type="Texture2D" uid="uid://cqg5rmdd3a0h2" path="res://assets/button/Play button.png" id="5_ik5hp"]
 [ext_resource type="Texture2D" uid="uid://ca4uelmoyh4jg" path="res://assets/button/Playpress button.png" id="6_tr7ng"]
 [ext_resource type="Texture2D" uid="uid://hkl3x0thtukg" path="res://assets/button/mutebutton1.png" id="7_0v4v6"]
@@ -12,26 +12,26 @@
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_4ohlf"]
 frames = 9
-frame_0/texture = ExtResource("3_g1b68")
-frame_1/texture = ExtResource("4_g01hn")
+frame_0/texture = ExtResource("3_yblp6")
+frame_1/texture = ExtResource("4_sqps5")
 frame_1/duration = 1.0
-frame_2/texture = ExtResource("3_g1b68")
+frame_2/texture = ExtResource("3_yblp6")
 frame_2/duration = 1.0
-frame_3/texture = ExtResource("4_g01hn")
+frame_3/texture = ExtResource("4_sqps5")
 frame_3/duration = 1.0
-frame_4/texture = ExtResource("3_g1b68")
+frame_4/texture = ExtResource("3_yblp6")
 frame_4/duration = 1.0
-frame_5/texture = ExtResource("4_g01hn")
+frame_5/texture = ExtResource("4_sqps5")
 frame_5/duration = 1.0
-frame_6/texture = ExtResource("3_g1b68")
+frame_6/texture = ExtResource("3_yblp6")
 frame_6/duration = 1.0
-frame_7/texture = ExtResource("4_g01hn")
+frame_7/texture = ExtResource("4_sqps5")
 frame_7/duration = 1.0
-frame_8/texture = ExtResource("3_g1b68")
+frame_8/texture = ExtResource("3_yblp6")
 frame_8/duration = 1.0
 
 [sub_resource type="Animation" id="Animation_sqps5"]
-length = 0.001
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -120,10 +120,10 @@ anchor_left = 0.104
 anchor_top = 0.93600005
 anchor_right = 0.104
 anchor_bottom = 0.93600005
-offset_left = -86.32
-offset_top = -78.12012
-offset_right = 86.68
-offset_bottom = 76.87988
+offset_left = -98.32
+offset_top = -40.120117
+offset_right = 74.68
+offset_bottom = 114.87988
 grow_vertical = 0
 toggle_mode = true
 action_mode = 0
